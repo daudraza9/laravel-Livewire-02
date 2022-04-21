@@ -1,15 +1,13 @@
 <?php
 
 namespace App\Http\Livewire\Admin\Users;
-
-
+use App\Http\Livewire\Admin\AdminComponent;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
-use Livewire\Component;
 
-class ListUsers extends Component
+class ListUsers extends AdminComponent
 {
-//    public $name,$email,$password,$passwordConfirmation;
+
     public $state = [];
     public $userIdBeingRemoved = null;
     public $showEditModel = false;
@@ -82,7 +80,7 @@ class ListUsers extends Component
     }
     public function render()
     {
-        $users = User::latest()->paginate();
+        $users = User::orderBy('id','asc')->paginate(5);
         return view('livewire.admin.users.list-users',[
             'users'=>$users,
         ]);

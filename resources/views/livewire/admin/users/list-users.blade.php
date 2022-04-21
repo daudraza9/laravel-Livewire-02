@@ -42,6 +42,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
+                                    <th scope="col">Registered at</th>
                                     <th scope="col">Options</th>
                                 </tr>
                                 </thead>
@@ -51,6 +52,7 @@
                                         <td>{{$user->id}}</td>
                                         <td>{{$user->name}}</td>
                                         <td>{{$user->email}}</td>
+                                        <td>{{$user->created_at->toFormatDate()}}</td>
                                         <td>
                                             <a href="" wire:click.prevent="edit({{$user}})">
                                                 <i class="fa fa-edit mr-2"></i>
@@ -63,6 +65,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div class="card-footer d-flex justify-content-end">
+                            {{$users->links()}}
                         </div>
                     </div>
                 </div>

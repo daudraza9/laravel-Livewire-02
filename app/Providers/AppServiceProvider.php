@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,5 +27,12 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(191);
+
+        Carbon::macro('toFormatDate',function (){
+            return $this->format('Y-m-d');
+        });
+        Carbon::macro('toFormatTime',function (){
+            return $this->format('h:i A');
+        });
     }
 }

@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{asset('backend/dist/css/adminlte.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('backend/plugins/toastr/toastr.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css')}}">
 
 </head>
 <livewire:styles/>
@@ -55,6 +56,9 @@
 <!-- AdminLTE App -->
 <script src="{{asset('backend/dist/js/adminlte.min.js')}}"></script>
 <script src="{{asset('backend/plugins/toastr/toastr.min.js')}}"></script>
+<script src="https://unpkg.com/moment"></script>
+<script src="{{asset('backend/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js')}}"></script>
+
 <script>
     $(document).ready(function() {
         toastr.options={
@@ -79,11 +83,15 @@
  window.addEventListener('hide-delete-modal',event=>{
        $('#confirmationModal').modal('hide');
      toastr.success(event.detail.message,'Success');
+ });
 
+ window.addEventListener('alert',event=>{
+     toastr.success(event.detail.message,'Success');
  });
 
 
 </script>
+@stack('js')
 <livewire:scripts/>
 </body>
 </html>
